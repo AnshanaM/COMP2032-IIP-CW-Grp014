@@ -107,3 +107,4 @@ for folder in folders:
 
     print(f"SSIM values for {folder} folder:", ssim_values)
     print(f"IOU values for {folder} folder:", iou_values)
+
