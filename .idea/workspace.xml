@@ -1,27 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="c9ce06d1-0c5b-46b4-ad73-8410943c07f6" name="Changes" comment="" />
+    <list default="true" id="c9ce06d1-0c5b-46b4-ad73-8410943c07f6" name="Changes" comment="additional initial">
+      <change afterPath="$PROJECT_DIR$/anshanaroi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/roiimplementation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/COMP2032-IIP-CW-Grp014.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/COMP2032-IIP-CW-Grp014.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/._Dataset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/._.DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/._ground_truths" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/._input_images" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/._.DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/._easy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/._hard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/._medium" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/easy/._easy_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/easy/._easy_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/easy/._easy_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/hard/._hard_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/hard/._hard_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/hard/._hard_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/medium/._medium_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/medium/._medium_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/ground_truths/medium/._medium_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/._.DS_Store" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/._easy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/._hard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/._medium" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/easy/._easy_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/easy/._easy_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/easy/._easy_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/hard/._hard_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/hard/._hard_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/hard/._hard_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/medium/._medium_1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/medium/._medium_2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dataset/__MACOSX/Dataset/input_images/medium/._medium_3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 7
-}]]></component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="branch2" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="2czD5GPNNDggPvO6BIPdx8OaOts" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.anshanaroi.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main4.executor&quot;: &quot;Run&quot;,
+    &quot;Python.maindump1.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.mainsample.executor&quot;: &quot;Run&quot;,
+    &quot;Python.roiimplementation.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="COMP2032-IIP-CW-Grp014" />
@@ -36,6 +110,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -49,7 +124,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
+        <option value="bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11" />
       </set>
     </attachedChunks>
   </component>
@@ -61,18 +136,79 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709105329162</updated>
+      <workItem from="1709277291993" duration="1358000" />
+      <workItem from="1709350426009" duration="3827000" />
+      <workItem from="1709440793598" duration="1649000" />
+      <workItem from="1709531924964" duration="531000" />
+      <workItem from="1709537717962" duration="3172000" />
+      <workItem from="1709563920503" duration="3674000" />
+      <workItem from="1709618220588" duration="3711000" />
+      <workItem from="1709710624775" duration="1964000" />
+      <workItem from="1709712826982" duration="1996000" />
+      <workItem from="1710074973945" duration="318000" />
+      <workItem from="1710124138488" duration="5442000" />
+      <workItem from="1710136838760" duration="157000" />
+      <workItem from="1710137567658" duration="275000" />
+      <workItem from="1710223137866" duration="2028000" />
+      <workItem from="1710245983309" duration="2073000" />
+      <workItem from="1710311422729" duration="5548000" />
+      <workItem from="1710317570962" duration="31000" />
+      <workItem from="1710339363804" duration="2104000" />
+      <workItem from="1710341930073" duration="800000" />
     </task>
+    <task id="LOCAL-00001" summary="without roi">
+      <option name="closed" value="true" />
+      <created>1710312732040</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710312732040</updated>
+    </task>
+    <task id="LOCAL-00002" summary="without roi">
+      <option name="closed" value="true" />
+      <created>1710312839578</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710312839578</updated>
+    </task>
+    <task id="LOCAL-00003" summary="additional initial">
+      <option name="closed" value="true" />
+      <created>1710312958411</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710312958411</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/main.py</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="without roi" />
+    <MESSAGE value="additional initial" />
+    <option name="LAST_COMMIT_MESSAGE" value="additional initial" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/COMP2032_IIP_CW_Grp014$main3.coverage" NAME="main3 Coverage Results" MODIFIED="1710128231572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/COMP2032_IIP_CW_Grp014$maindump1.coverage" NAME="maindump1 Coverage Results" MODIFIED="1710247116338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/COMP2032_IIP_CW_Grp014$roiimplementation.coverage" NAME="roiimplementation Coverage Results" MODIFIED="1710342328383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/COMP2032_IIP_CW_Grp014$main4.coverage" NAME="main4 Coverage Results" MODIFIED="1710136878332" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/COMP2032_IIP_CW_Grp014$anshanaroi.coverage" NAME="anshanaroi Coverage Results" MODIFIED="1710339434251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/COMP2032_IIP_CW_Grp014$mainsample.coverage" NAME="mainsample Coverage Results" MODIFIED="1710247607879" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/COMP2032_IIP_CW_Grp014$main.coverage" NAME="main Coverage Results" MODIFIED="1710342172579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
