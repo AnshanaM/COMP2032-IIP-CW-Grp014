@@ -213,7 +213,6 @@ To execute the image processing pipeline, run the main.py file. The script will 
 - main.py
 - README.md
 
-**where the easy directory contains easy1, easy2, easy3 images and similarly with the directories medium and hard**
 
 <b>Output</b>
 
