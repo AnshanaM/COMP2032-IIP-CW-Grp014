@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-from skimage.metrics import structural_similarity as ssim
 from skimage.measure import regionprops, label
 import os
 
@@ -8,19 +7,10 @@ def convert_grayscale(img):
     img_bw = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     return img_bw
 
-
-def negation(img):
-    if img.dtype != 'uint8':
-        img = img.astype('uint8')
-    negated_image = 255 - img
-    return negated_image
-
-
 def inc_gain(img, gain_factor):
     scaled_image = img * gain_factor
     scaled_image[scaled_image > 255] = 255
     return scaled_image
-
 
 def histogramEq(img):
     img = img.astype(np.uint8)
@@ -39,7 +29,7 @@ def otsu_threshold(img):
         gray_img = img
     if gray_img.dtype != 'uint8':
         gray_img = gray_img.astype('uint8')
-    _, otsu_threshold = cv2.threshold(gray_img, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    _, otsu_threshold = cv2.threshold(gray_img, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)
     return otsu_threshold
 
 
@@ -77,14 +67,12 @@ def extract_foreground(image):
     foreground = cv2.bitwise_and(image, image, mask=foreground_mask)
     return foreground
 
+def morphology_close(image,kernel_size):
+    kernel = np.ones((kernel_size, kernel_size), np.uint8)
+    closing_image = cv2.morphologyEx(image, cv2.MORPH_CLOSE, kernel)
+    return closing_image
 
-def sharpen_img(image, strength=1.5, sigma=1.0):
-    blurred = cv2.GaussianBlur(image, (0, 0), sigma)
-    sharpened = cv2.addWeighted(image, 1.0 + strength, blurred, -strength, 0)
-    return sharpened
-
-
-def roi(binary_image):
+def CCL_LSS(binary_image): # performs connected component labelling and largest segment selection
     labeled_image = label(binary_image)
     regions = regionprops(labeled_image)
     largest_label = max(regions, key=lambda region: region.area).label
@@ -94,6 +82,11 @@ def roi(binary_image):
     largest_black_blob_image[largest_black_blob_mask] = 1
     return largest_black_blob_image
 
+def negation(img):
+    if img.dtype != 'uint8':
+        img = img.astype('uint8')
+    negated_image = 255 - img
+    return negated_image
 
 # processing performed on ground truth:
 # extract red foreground on ground truth images
@@ -109,9 +102,9 @@ def process_ground_truth(image):
                 grayscale_image[i, j] = 1
             else:
                 grayscale_image[i, j] = 0
-    return roi(dilation(grayscale_image, 7))
+    return CCL_LSS(dilation(grayscale_image, 7))
 
-def calculate_iou(predicted_mask,ground_truth_mask):
+def calculate_overlap_score(ground_truth_mask, predicted_mask):
     intersection = np.logical_and(predicted_mask,ground_truth_mask)
     union = np.logical_or(predicted_mask,ground_truth_mask)
     intersection_area = np.sum(intersection)
@@ -119,11 +112,10 @@ def calculate_iou(predicted_mask,ground_truth_mask):
     iou = intersection_area/ (union_area + 1e-6) #adding epsilon to avoid division by 0
     return iou
 
-def calculate_ssim(ground_truth, final):
-    # print(ground_truth.shape)
-    # print(final.shape)
-    similarity = ssim(ground_truth, final, data_range=1.0, channel_axis=None)
-    return similarity
+def mean_squared_error(ground_truth, final):
+    squared_diff = (ground_truth - final) ** 2
+    mse = np.mean(squared_diff)
+    return mse
 
 def calculate_miou(ground_truth, final):
     intersection = np.logical_and(final == 1, ground_truth == 1)
@@ -134,7 +126,6 @@ def calculate_miou(ground_truth, final):
     iou_class0 = np.sum(intersection_bg) / np.sum(union_bg)
     miou = (iou_class1 + iou_class0) / 2
     return miou
-
 
 # creating output folders to store the final images, processed ground truths and images as they pass through the pipeline
 current_directory = os.getcwd()
@@ -154,13 +145,6 @@ for folder in file_names:
     folder_path = os.path.join(new_folder_path, folder)
     os.makedirs(folder_path, exist_ok=True)
 
-new_folder_path = os.path.join(current_directory, 'original_ground_truth_binary')
-os.makedirs(new_folder_path, exist_ok=True)
-file_names = ['easy', 'medium', 'hard']
-sub_folders = ['1', '2', '3']
-for folder in file_names:
-    folder_path = os.path.join(new_folder_path, folder)
-    os.makedirs(folder_path, exist_ok=True)
 
 main_folder = os.path.join(current_directory, 'Image Processing Pipeline')
 os.makedirs(main_folder, exist_ok=True)
@@ -174,47 +158,35 @@ for folder_name in file_names:
 # customizable function to apply all processing functions to image
 def image_pipeline(img, ground,j,count):
     grayscale = convert_grayscale(img)
-    gamma_img = gamma_Correction(grayscale, 3)
+    gamma_img= gamma_Correction(grayscale,3.5)
     foreground_img = extract_foreground(gamma_img)
     negated_img = negation(foreground_img)
     hist_eq_img = histogramEq(negated_img)
     otsu_thresh_img = otsu_threshold(hist_eq_img)
-    negated_img2 = negation(otsu_thresh_img)
-    final_img = roi(negated_img2)
+    final_img = CCL_LSS(otsu_thresh_img)
 
     processed_groundt_img = process_ground_truth(ground)
 
-    _, original_groundt_binary = cv2.threshold(convert_grayscale(ground), 50, 255, cv2.THRESH_BINARY)
-    original_groundt_binary = (negation(original_groundt_binary)/255.0)
-
-    # cv2.imshow("g",original_groundt_binary)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
-
     print("\nImage name: " + j + "_" + str(count))
-    print("{:<25} {:<25} {:<20}".format("Type", "Original ground truth", "Processed ground truth"))
-    print("{:<25} {:<25.5f} {:<20.5f}".format("Similarity index (%)",
-                                              calculate_ssim(original_groundt_binary, final_img) * 100,
-                                              calculate_ssim(processed_groundt_img, final_img) * 100))
-    print("{:<25} {:<25.5f} {:<20.5f}".format("mIoU (%)",
-                                              calculate_miou(original_groundt_binary, final_img) * 100,
+    print("{:<25} {:<25}".format("Evaluation Metric Type", "Evaluation Metric Result"))
+    print("{:<25} {:<25.5f}".format("mIoU (%)",
                                               calculate_miou(processed_groundt_img, final_img) * 100))
-    print("{:<25} {:<25.5f} {:<20.5f}".format("IoU (%)",
-                                              calculate_iou(final_img, original_groundt_binary) * 100,
-                                              calculate_iou(final_img, processed_groundt_img) * 100))
+    print("{:<25} {:<25.5f}".format("Overlap Score (%)",
+                                              calculate_overlap_score(processed_groundt_img, final_img) * 100))
+    print("{:<25} {:<25.5f}".format("Mean Squared Error",
+                                              mean_squared_error(processed_groundt_img, final_img)))
 
     # convert binary images to RGB format
     final_img = final_img*255
     processed_groundt_img = processed_groundt_img*255
-    return final_img, processed_groundt_img, original_groundt_binary, [grayscale, gamma_img, foreground_img, negated_img, hist_eq_img, otsu_thresh_img,negated_img2]
+    return final_img, processed_groundt_img, [grayscale, gamma_img, negated_img, foreground_img, hist_eq_img, otsu_thresh_img,final_img]
 
-half_processed_file_names = ["grayscale", "gamma","foreground_extracted","negated", "histogram_equalization", "otsu", "negated2"]
+half_processed_file_names = ["1_grayscale", "2_gamma","3_foreground","4_negated", "5_histogram_equalisation", "6_otsu","7_ccl_lss"]
 def execute_pipeline(image_pipeline):
     input_file_directory = ".\\Dataset\\input_images\\"
     ground_truth_directory = ".\\Dataset\\ground_truths\\"
     output_file_directory = ".\\Output\\"
     processed_ground_truth_file_directory = ".\\processed_ground_truth\\"
-    original_groundt_binary_file_directory = ".\\original_ground_truth_binary\\"
     pipeline_directory = ".\\Image Processing Pipeline\\"
 
     for j in file_names:
@@ -237,7 +209,6 @@ def execute_pipeline(image_pipeline):
             ground_directory.append(ground_truth_directory + j + "\\" + j + "_" + num + ".png")
             final_image_directory.append(output_file_directory + j + "\\" + j + "_" + num + ".jpg")
             processed_ground_directory.append(processed_ground_truth_file_directory + j + "\\" + j + "_" + num + ".jpg")
-            groundt_binary_directory.append(original_groundt_binary_file_directory + j + "\\" + j + "_" + num + ".jpg")
 
         # getting input images
         for directory in input_directory:
@@ -250,10 +221,9 @@ def execute_pipeline(image_pipeline):
         # getting final images
         count = 1
         for (input_img, ground_img, finalimgdir) in zip(input_images, ground_images, final_image_directory):
-            fimage, ground_image, original_ground_binary , array = image_pipeline(input_img, ground_img, j, count)
+            fimage, ground_image, array = image_pipeline(input_img, ground_img, j, count)
             pipeline_image_list.append(array)
             processed_ground_images.append(ground_image)
-            groundt_binary_images.append(original_ground_binary)
             cv2.imwrite(finalimgdir, fimage)
             count += 1
 
@@ -261,17 +231,11 @@ def execute_pipeline(image_pipeline):
         for (directory, img) in zip(processed_ground_directory,processed_ground_images):
             cv2.imwrite(directory,img)
 
-        # storing the original binary ground truths
-        for (directory, img) in zip(groundt_binary_directory, groundt_binary_images):
-            img_uint8 = (img * 255).astype(np.uint8)
-            cv2.imwrite(directory, img_uint8)
 
         # storing the intermediate images from the pipeline
         for i in range(1,4):
             image_directory = pipeline_directory+j+"\\"+j+"_"+str(i)
-            count = 1;
             for (file_name,image) in zip(half_processed_file_names, pipeline_image_list[i-1]):
-                cv2.imwrite(image_directory+"\\"+str(count)+"."+file_name+".jpg", image)
-                count += 1
+                cv2.imwrite(image_directory+"\\"+file_name+".jpg", image)
 
 execute_pipeline(image_pipeline)
