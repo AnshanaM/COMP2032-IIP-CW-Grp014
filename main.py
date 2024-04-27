@@ -179,7 +179,7 @@ def image_pipeline(img, ground,j,count):
     # convert binary images to RGB format
     final_img = final_img*255
     processed_groundt_img = processed_groundt_img*255
-    return final_img, processed_groundt_img, [grayscale, gamma_img, negated_img, foreground_img, hist_eq_img, otsu_thresh_img,final_img]
+    return final_img, processed_groundt_img, [grayscale, gamma_img, foreground_img, negated_img, hist_eq_img, otsu_thresh_img,final_img]
 
 half_processed_file_names = ["1_grayscale", "2_gamma","3_foreground","4_negated", "5_histogram_equalisation", "6_otsu","7_ccl_lss"]
 def execute_pipeline(image_pipeline):
